@@ -1,0 +1,81 @@
+
+Q6:
+
+here are my results for Q6, where I can match the examples in the question, and some even bigger sets, but the code isn't a general solution. Yet. For the examples given, my code works. But this solution doesn't work for longer lengths of strips of dilitium ore to mine,
+
+As you can see, while short strips of length 'n' (like the examples) have n-1 possible ways to mine them, longer strips get more complicated, and the level of complication accelerates. By the time one gets to 13 squares in the strip, there are 37 possible sequences through the squares. I know what's required, I think its complete, but I haven't coded it up yet. But I plan to. I want to see it solved.
+
+Q6 examples and one long one I made up:
+
+bill-abbotts-imac:Comcast- Pao_s_Job billabbott$ java Q6 206 140 300 52 107
+
+variations [[0, 1, 0, 1, 0], [0, 1, 0, 0, 1], [1, 0, 1, 0, 1], [1, 0, 0, 1, 0]]
+
+largestValue: 613 = 206  + 300  + 107
+largestScheme: 2   [1, 0, 1, 0, 1]
+
+  aStrip: [206, 140, 300, 52, 107]  Yields: [192, 247, 613, 258]
+
+
+bill-abbotts-imac:Comcast- Pao_s_Job billabbott$
+bill-abbotts-imac:Comcast- Pao_s_Job billabbott$ java Q6 147 206 52 240 300
+
+variations [[0, 1, 0, 1, 0], [0, 1, 0, 0, 1], [1, 0, 1, 0, 1], [1, 0, 0, 1, 0]]
+
+largestValue: 506 = 206  + 300
+largestScheme: 1   [0, 1, 0, 0, 1]
+
+  aStrip: [147, 206, 52, 240, 300]  Yields: [446, 506, 499, 387]
+
+
+bill-abbotts-imac:Comcast- Pao_s_Job billabbott$ java Q6 147 206 52 240 300  206 140 300 52 107  206 140 300 52 107 147 206 52 240 300
+
+variations [[0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1], 
+[0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0], 
+[0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0], 
+[0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0], 
+[0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0], 
+[0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0], 
+[0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0], 
+[0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0], 
+[0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0], 
+[1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0], 
+[1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1], 
+[1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1], 
+[1, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1], 
+[1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1], 
+[1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1], 
+[1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1], 
+[1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1], 
+[1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 1], 
+[1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1]]
+
+largestValue: 2011 = 206  + 240  + 206  + 300  + 206  + 300  + 107  + 206  + 240
+largestScheme: 4   [0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0]
+
+  aStrip: [147, 206, 52, 240, 300, 206, 140, 300, 52, 107, 206, 140, 300, 52, 107, 147, 206, 52, 240, 300]  Yields: [1750, 1757, 1697, 1763, 2011, 1912, 1752, 1697, 1638, 1750, 1691, 1503, 1597, 1437, 1382, 1448, 1696, 1656, 1810]
+bill-abbotts-imac:Comcast- Pao_s_Job billabbott$
+
+With this many terms, there should be everything from the 19 values shown above to [1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0] and [0,1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,1]. I estimate more than 50 possible sequences (the precise number is computable but I haven't done so yet.)
+Here's the total number of combinations for 4 to 13 mineable squares in a row:
+
+What makes this unsettling is that triple double 0s can have asymetric spacings-, as can quadruple, blah blah blah. The solution space is expanding remarkably fast.
+
+columns,     values,     00, never            interesting/
+                       11 or 111     delta    total values 
+4                 16           3       1      1.875 e-1
+5                 32           4       1      1.25 e-1
+6                 64           5       1      7.8125 e-2
+7                128           7       2      5.46875 e-2
+8                256           9       2      3.515625 e-2
+9                512          12       3      2.34375 e-2
+10              1024          16       4      1.5625 e-2
+11              2048          21       5      1.025390625 e-2
+12              4096          28       7      6.8359375 e-3
+13              8192          37       9      4.5166015625 e-3
+
+- not decreasing in a straight line!
+
+ 
+A general solution has to come up with every possible way to arrange one or more "0, 0, 1"  blocks in multiple schemes, spaced apart by "1,0" blocks, starting with "1" or "0, 1" and ending with "<blank>" or "0". As if against a background of  "0,1,0,1" or "1,0,1,0"
+

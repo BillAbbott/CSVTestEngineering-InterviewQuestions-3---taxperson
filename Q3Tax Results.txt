@@ -1,0 +1,30 @@
+
+Q3:
+
+I re-read the instructions and completed a solution for Q3. If I'm answering in less than 2 hours, its the one I'd start with and that should have been my answer before.
+So I'm including my solution to Q3 and the run-time results below.
+
+bill-abbotts-imac:Comcast- Pao_s_Job billabbott$ java Q3Tax n 100
+Necessity item;  price: 100  tax: 1  = Total: 101
+
+bill-abbotts-imac:Comcast- Pao_s_Job billabbott$ java Q3Tax l 100
+Luxury item;  price: 100  tax: 9  = Total: 109
+
+bill-abbotts-imac:Comcast- Pao_s_Job billabbott$ java Q3Tax N 100
+Necessity item;  price: 100  tax: 1  = Total: 101
+
+bill-abbotts-imac:Comcast- Pao_s_Job billabbott$ java Q3Tax N 1000000
+Necessity item;  price: 1000000  tax: 10000  = Total: 1010000
+
+bill-abbotts-imac:Comcast- Pao_s_Job billabbott$ java Q3Tax L 1000000
+Luxury item;  price: 1000000  tax: 90000  = Total: 1090000
+
+bill-abbotts-imac:Comcast- Pao_s_Job billabbott$ java Q3Tax l 66595
+Luxury item;  price: 66595  tax: 5994  = Total: 72589
+
+bill-abbotts-imac:Comcast- Pao_s_Job billabbott$ java Q3Tax l 1234567891
+Luxury item;  price: 1234567891  tax: 111111110  = Total: 1345679001
+
+
+Was the complexity of the questions part of the problem, was one supposed to figure out that #3 was easiest and do it first?
+
