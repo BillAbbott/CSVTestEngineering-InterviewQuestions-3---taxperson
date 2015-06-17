@@ -1,8 +1,11 @@
-bill-abbotts-imac:Comcast- Pao_s_Job billabbott$ bash Q3Tests.sh
+bill-abbotts-imac:Comcast- Pao_s_Job billabbott$ sh Q3Tests.sh
 unit and other tests for Q3Tax program:
 -rw-r--r--  1 billabbott  staff   2229 Jun 10 16:25 Q3Tax.class
 -rw-------@ 1 billabbott  staff   2734 Jun 10 16:24 Q3Tax.java
--rw-------@ 1 billabbott  staff  12879 Jun 16 20:37 Q3Tests.sh
+-rw-r--r--  1 billabbott  staff   5761 Jun 17 02:32 Q3Tax.java.list
+-rw-------@ 1 billabbott  staff  13061 Jun 17 02:43 Q3Tests.sh
+-rw-r--r--  1 billabbott  staff  13900 Jun 17 02:21 Q3Tests.sh.list
+-rw-r--r--  1 billabbott  staff   8703 Jun 16 20:38 Q3Tests.txt
 Smoke test. do one thing once. expect something like: Necessity item;  price: 100  tax: 1  = Total: 101
 Necessity item;  price: 100  tax: 1  = Total: 101
 
@@ -64,7 +67,7 @@ What does '7' mean?
 Necessity item;  price: 100  tax: 1  = Total: 101
 
 What does '&' mean?
-Q3Tests.sh: line 79: 100: command not found
+Q3Tests.sh: line 81: 100: command not found
 What does '?' mean?
 Necessity item;  price: 100  tax: 1  = Total: 101
 
@@ -100,6 +103,25 @@ Luxury item;  price: 91  tax: 8  = Total: 99
 
 'NNNN..3000..NNN 000..1000x...00091' tax: 8
 Necessity item;  price: 91  tax: 1  = Total: 92
+
+multiple categories and prices in a single command line are processed without error
+Luxury item;  price: 100  tax: 9  = Total: 109
+
+Necessity item;  price: 100  tax: 1  = Total: 101
+
+Luxury item;  price: 200  tax: 18  = Total: 218
+
+Necessity item;  price: 200  tax: 2  = Total: 202
+
+Necessity item;  price: 400  tax: 4  = Total: 404
+
+Necessity item;  price: 400  tax: 4  = Total: 404
+
+Necessity item;  price: 500  tax: 5  = Total: 505
+
+Necessity item;  price: 700  tax: 7  = Total: 707
+
+Luxury item;  price: 100  tax: 9  = Total: 109
 
 no args: no output!
 
@@ -141,7 +163,7 @@ Exception in thread "main" java.lang.NumberFormatException: For input string: "0
 	at Q3Tax.main(Q3Tax.java:52)
 
 not correct args:
-Q3Tests.sh: line 178: *_+: command not found
+Q3Tests.sh: line 184: *_+: command not found
 Exception in thread "main" java.lang.NumberFormatException: For input string: "l"
 	at java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
 	at java.lang.Integer.parseInt(Integer.java:492)

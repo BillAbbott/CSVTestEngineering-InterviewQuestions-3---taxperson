@@ -1,0 +1,100 @@
+This line-numbered copy of the .java source is marked to show which lines in the Q3Test.sh script test these lines in the .java file.	
+For white box / unit-test purposes, there are more tests here than are strictly needed. But its too late to make significant changes so I'm leaving it.
+
+     1   
+     2	/*        
+     3	  This is a simple Java program to answer Comcast’s Question 3
+     4	  Call this file “Q3Tax.java"
+     5	
+     6	Q3:
+     7	Calculate the total cost of an item including tax based on whether it is considered 
+     8	a necessary or luxury item. The tax rate for basic necessities is 1%, the tax rate 
+     9	for luxury items is 9%. For simplicity of implementation, all transactions are 
+    10	measured in cents (pennies).
+    11	
+    12	 */  
+    13	
+    14	import java.util.Locale;
+    15	import java.lang.Math.*;
+    16	
+    17	public class Q3Tax  {
+    18	
+    19	   static Boolean verbose = new Boolean( false );
+    20	
+    21	   private static final double LUXRATE = 0.09; // 9 percent - unit test can verify   implements line 9  tested line 9, 13, 17, 19, 25, 26, etc.
+    22	   static final double NECESS_RATE = 0.01; // 1 percent     - unit test can verify   implements line 8  tested line 5, 11, 15, 22, 24, 29, 31, 33,  etc. 
+    23	   static final String LUXNAME = "Luxury";                  - unit test can verify   implements line 9  tested line 9, 13, 17, 19, 25, 26, etc.
+    24	   static final String NECESS_NAME = "Necessity";           - unit test can verify   implements line 8  tested line 5, 11, 15, 22, 24, 29, 31, 33, etc.
+    25	
+    26	
+    27	   // Your program begins with a call to main().
+    28	   public static void main(String args[])  {                 - verified by command line having effect  - lines 5,9,..70,72 vs  74,79,...89,91, etc.
+    29	
+    30	      Boolean luxury = false;   // default non-luxury        - unit test can verify - 29, 31, 33, 36, 38, 40, 42, 44, 46, 48, 50, 
+    31	      Integer price = new Integer( 0 );
+    32	      Double taxRate = new Double (0.0);
+    33	      String category = new String ("");
+    34	      String sArgsZipContent = "Please enter Luxury or Necessity (LNln) and price in cents, such as 'L 66595' separated by whitespace";  // not tested
+    35	
+    36	      if (verbose) System.out.println("args.length " + args.length ); // verify NOT printed
+    37	      if (0 < args.length )  {          // not tested
+    38	          sArgsZipContent = args[0];    // not tested
+    39	      }
+    40	      if (verbose) System.out.println("Hello " + sArgsZipContent ); // verify NOT printed
+    41	
+    42	      for (int count = 0; count < args.length; count++ ) {                     // responds to args length  lines 105-113
+    43	         category = new String( args[ count ].toUpperCase(Locale.ENGLISH) );   // input converted to UpperCase  lines 5, 9, 17, 19, 22, 24, 25, 26,  etc
+    44	         count++; // loop uses args[n] and args[n+1]                          
+    45	         if (category.contains( new String( "L" ))) {                          // l or L force Luxury, else Necessity   tested line 9, 13, 17, 19, 25, 26, 36, 38, 45, 47, etc.
+    46	            luxury= new Boolean(true); // will autoboxing take care of this?   // value of luxury can be verified   tested line 9, 13, 17, 19, 25, 26, 36, 38, 45, 
+    47	         } else {
+    48	            luxury= new Boolean(false);                                        // value of luxury can be verified   tested line 5, 11, 15, 22, 24,
+    49	         } // if category.contains... else...
+    50	
+    51	         if ( count < args.length  ) {                         // tax rate, category name only set if 2nd arg present.  105-113
+    52	            price = new Integer(args[ count ]);                // only format supported by Integer works  5,9,11,13,15,17,19,24,25,26,29,31,33,36... vs
+                                                                           //  99,100,101,102,107,108, etc
+    53	            if (luxury) {                                          // result of luxury being set,  tested line 9, 13, 17, 19, 25, 26 
+    54	                 taxRate = new Double( LUXRATE); // nine percent.  // taxRate set  tested line 9, 13, 17, 19, 25, 26
+    55	                 category = new String( LUXNAME );                 // category set tested line 9, 13, 17, 19, 25, 26
+    56	            } else {                                                 // if luxury else - *not* set-  tested line 5, 11, 15, 22, 24,  
+    57	                 taxRate = new Double(NECESS_RATE); // one percent.   // taxRate set   tested line 5, 11, 15, 22, 24, 
+    58	                 category = new String( NECESS_NAME );                // category set   tested line 5, 11, 15, 22, 24, 
+    59	            } 
+    60	            int tax = (int) Math.round(( price * taxRate ));        // verify tax int-cast of Math.round( int price * double taxRate )  line 66, 68, 70
+    61	            int total = price + tax;                                // verify total = price + tax      //  all output - 5,9,11,13... 62, 64, 66, etc.
+    62	            String output = new String(  category + " item;  price: " + price + "  tax: " + tax + "  = Total: " + total + "\n" ); // verify in any output
+    63	            System.out.println( output );                           // verify in any output 5, 9, 11, 13, 15, 17...66, 68, 70..
+    64	         } else { 
+    65	         }       // if count < args.len else..                      // else nothing happens
+    66	
+    67	
+    68	      } // for int count...                                         // what happens if multiple categories & prices?? - works fine,  tested by line 72.
+    69	
+    70	
+    71	
+    72	   } // public static void main...
+    73	
+    74	
+    75	} // class Q3Tax
+    76	
+    77	
+    78	
+    79	
+    80	
+    81	
+    82	
+    83	
+    84	
+    85	
+    86	
+    87	
+    88	
+    89	
+    90	
+    91	
+    92	
+    93	
+    94	
+    95	
+    96	
