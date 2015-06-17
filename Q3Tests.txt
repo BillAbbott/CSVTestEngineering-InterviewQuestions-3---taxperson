@@ -1,0 +1,213 @@
+bill-abbotts-imac:Comcast- Pao_s_Job billabbott$ bash Q3Tests.sh
+unit and other tests for Q3Tax program:
+-rw-r--r--  1 billabbott  staff   2229 Jun 10 16:25 Q3Tax.class
+-rw-------@ 1 billabbott  staff   2734 Jun 10 16:24 Q3Tax.java
+-rw-------@ 1 billabbott  staff  12879 Jun 16 20:37 Q3Tests.sh
+Smoke test. do one thing once. expect something like: Necessity item;  price: 100  tax: 1  = Total: 101
+Necessity item;  price: 100  tax: 1  = Total: 101
+
+
+Unit test. Try each of the mandated L,N,l,n, integer arguments. Make changes 1 at a time, but put combined tests first to fail quickly after release.
+expect: Luxury item;  price: 100  tax: 9  = Total: 109
+Luxury item;  price: 100  tax: 9  = Total: 109
+
+tax: 1
+Necessity item;  price: 100  tax: 1  = Total: 101
+
+tax: 90000
+Luxury item;  price: 1000000  tax: 90000  = Total: 1090000
+
+tax: 10000 
+Necessity item;  price: 1000000  tax: 10000  = Total: 1010000
+
+tax: 5994  = Total: 72589
+Luxury item;  price: 66595  tax: 5994  = Total: 72589
+
+expect tax: 111111110  = Total: 1345679001
+Luxury item;  price: 1234567891  tax: 111111110  = Total: 1345679001
+
+
+Smoke test. do one thing once. expect something like: Necessity item;  price: 100  tax: 1  = Total: 101
+Necessity item;  price: 100  tax: 1  = Total: 101
+
+values too large:
+Necessity item;  price: -1234567891  tax: -12345679  = Total: -1246913570
+
+Luxury item;  price: 2034567891  tax: 183111110  = Total: -2077288295
+
+Luxury item;  price: -2034567891  tax: -183111110  = Total: 2077288295
+
+not correct args, but numbers cause no error:
+2 args: 100 100
+Necessity item;  price: 100  tax: 1  = Total: 101
+
+2 args: 100 987654321
+Necessity item;  price: 987654321  tax: 9876543  = Total: 997530864
+
+2 args: 1 1
+Necessity item;  price: 1  tax: 0  = Total: 1
+
+
+What does 'a' mean? What should it mean? Z? 7? &? ?? :? etc.
+Necessity item;  price: 100  tax: 1  = Total: 101
+
+What does 'A' mean?
+Necessity item;  price: 100  tax: 1  = Total: 101
+
+What does 'Z' mean?
+Necessity item;  price: 100  tax: 1  = Total: 101
+
+What does 'z' mean?
+Necessity item;  price: 100  tax: 1  = Total: 101
+
+What does '7' mean?
+Necessity item;  price: 100  tax: 1  = Total: 101
+
+What does '&' mean?
+Q3Tests.sh: line 79: 100: command not found
+What does '?' mean?
+Necessity item;  price: 100  tax: 1  = Total: 101
+
+What does ':' mean?
+Necessity item;  price: 100  tax: 1  = Total: 101
+
+What does 'abcdefghijklmnopqrstuvwxyz' mean?
+Luxury item;  price: 100  tax: 9  = Total: 109
+
+'NN' tax: 1
+Necessity item;  price: 100  tax: 1  = Total: 101
+
+'LLLLLLLLLLLL' tax: 90000
+Luxury item;  price: 1000000  tax: 90000  = Total: 1090000
+
+'NNN..1000x..NN' tax: 1
+Necessity item;  price: 100  tax: 1  = Total: 101
+
+'NNN..3000x..NN' tax: 1
+Necessity item;  price: 100  tax: 1  = Total: 101
+
+tax: 5994  = Total: 72589
+Luxury item;  price: 66595  tax: 5994  = Total: 72589
+
+expect tax: 111111110  = Total: 1345679001
+Luxury item;  price: 1234567891  tax: 111111110  = Total: 1345679001
+
+'L 000..00091' tax: 8
+Luxury item;  price: 91  tax: 8  = Total: 99
+
+'L 000..1000x...00091' tax: 8
+Luxury item;  price: 91  tax: 8  = Total: 99
+
+'NNNN..3000..NNN 000..1000x...00091' tax: 8
+Necessity item;  price: 91  tax: 1  = Total: 92
+
+no args: no output!
+
+Smoke test. do one thing once. expect something like: Necessity item;  price: 100  tax: 1  = Total: 101
+Necessity item;  price: 100  tax: 1  = Total: 101
+
+one arg: N: no output!
+one arg: L
+one arg: n
+one arg: l
+one arg: 23456789
+one arg: -23456789
+one arg: -20.3456..
+one arg: 100
+
+
+These are expected to fail!
+incorrectly formed ints:
+
+Exception in thread "main" java.lang.NumberFormatException: For input string: "100.00e2"
+	at java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
+	at java.lang.Integer.parseInt(Integer.java:492)
+	at java.lang.Integer.<init>(Integer.java:677)
+	at Q3Tax.main(Q3Tax.java:52)
+Exception in thread "main" java.lang.NumberFormatException: For input string: "100.00e-3"
+	at java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
+	at java.lang.Integer.parseInt(Integer.java:492)
+	at java.lang.Integer.<init>(Integer.java:677)
+	at Q3Tax.main(Q3Tax.java:52)
+Exception in thread "main" java.lang.NumberFormatException: For input string: "0x1"
+	at java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
+	at java.lang.Integer.parseInt(Integer.java:492)
+	at java.lang.Integer.<init>(Integer.java:677)
+	at Q3Tax.main(Q3Tax.java:52)
+Exception in thread "main" java.lang.NumberFormatException: For input string: "0xFF"
+	at java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
+	at java.lang.Integer.parseInt(Integer.java:492)
+	at java.lang.Integer.<init>(Integer.java:677)
+	at Q3Tax.main(Q3Tax.java:52)
+
+not correct args:
+Q3Tests.sh: line 178: *_+: command not found
+Exception in thread "main" java.lang.NumberFormatException: For input string: "l"
+	at java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
+	at java.lang.Integer.parseInt(Integer.java:492)
+	at java.lang.Integer.<init>(Integer.java:677)
+	at Q3Tax.main(Q3Tax.java:52)
+Exception in thread "main" java.lang.NumberFormatException: For input string: "N"
+	at java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
+	at java.lang.Integer.parseInt(Integer.java:492)
+	at java.lang.Integer.<init>(Integer.java:677)
+	at Q3Tax.main(Q3Tax.java:52)
+Exception in thread "main" java.lang.NumberFormatException: For input string: "n"
+	at java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
+	at java.lang.Integer.parseInt(Integer.java:492)
+	at java.lang.Integer.<init>(Integer.java:677)
+	at Q3Tax.main(Q3Tax.java:52)
+Exception in thread "main" java.lang.NumberFormatException: For input string: "L"
+	at java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
+	at java.lang.Integer.parseInt(Integer.java:492)
+	at java.lang.Integer.<init>(Integer.java:677)
+	at Q3Tax.main(Q3Tax.java:52)
+Exception in thread "main" java.lang.NumberFormatException: For input string: "A"
+	at java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
+	at java.lang.Integer.parseInt(Integer.java:492)
+	at java.lang.Integer.<init>(Integer.java:677)
+	at Q3Tax.main(Q3Tax.java:52)
+Exception in thread "main" java.lang.NumberFormatException: For input string: "z"
+	at java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
+	at java.lang.Integer.parseInt(Integer.java:492)
+	at java.lang.Integer.<init>(Integer.java:677)
+	at Q3Tax.main(Q3Tax.java:52)
+Exception in thread "main" java.lang.NumberFormatException: For input string: "?"
+	at java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
+	at java.lang.Integer.parseInt(Integer.java:492)
+	at java.lang.Integer.<init>(Integer.java:677)
+	at Q3Tax.main(Q3Tax.java:52)
+
+values too small:
+Exception in thread "main" java.lang.NumberFormatException: For input string: ".2034567891"
+	at java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
+	at java.lang.Integer.parseInt(Integer.java:481)
+	at java.lang.Integer.<init>(Integer.java:677)
+	at Q3Tax.main(Q3Tax.java:52)
+Exception in thread "main" java.lang.NumberFormatException: For input string: "0.2034567891"
+	at java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
+	at java.lang.Integer.parseInt(Integer.java:492)
+	at java.lang.Integer.<init>(Integer.java:677)
+	at Q3Tax.main(Q3Tax.java:52)
+Exception in thread "main" java.lang.NumberFormatException: For input string: "-20.34567891"
+	at java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
+	at java.lang.Integer.parseInt(Integer.java:492)
+	at java.lang.Integer.<init>(Integer.java:677)
+	at Q3Tax.main(Q3Tax.java:52)
+Exception in thread "main" java.lang.NumberFormatException: For input string: ".00000000000000000002034567891"
+	at java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
+	at java.lang.Integer.parseInt(Integer.java:481)
+	at java.lang.Integer.<init>(Integer.java:677)
+	at Q3Tax.main(Q3Tax.java:52)
+Exception in thread "main" java.lang.NumberFormatException: For input string: "0.00000000000000000002034567891"
+	at java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
+	at java.lang.Integer.parseInt(Integer.java:492)
+	at java.lang.Integer.<init>(Integer.java:677)
+	at Q3Tax.main(Q3Tax.java:52)
+Exception in thread "main" java.lang.NumberFormatException: For input string: "-20.3400000000000000000000567891"
+	at java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
+	at java.lang.Integer.parseInt(Integer.java:492)
+	at java.lang.Integer.<init>(Integer.java:677)
+	at Q3Tax.main(Q3Tax.java:52)
+done!
+
